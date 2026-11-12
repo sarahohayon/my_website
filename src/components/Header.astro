@@ -1,0 +1,25 @@
+---
+interface Props { active?: 'home' | 'research' | 'conservation' | 'services' }
+const { active = 'home' } = Astro.props;
+const links = [
+  { href: '/#about', label: 'עליי', key: 'about' },
+  { href: '/research/phd/', label: 'מחקר מדעי', key: 'research' },
+  { href: '/conservation/', label: 'יוזמות לשמירת טבע', key: 'conservation' },
+  { href: '/services/', label: 'ייעוץ וליווי אקולוגי', key: 'services' },
+];
+const contactHref = active === 'services' ? '#contact' : '/#contact';
+---
+<header class="site-header">
+  <nav>
+    <a href="/" class="brand">
+      <span class="brand-name">ד״ר שרה אוחיון</span>
+      <span class="brand-sub">אקולוגית סביבות ימיות ובתי גידול לחים</span>
+    </a>
+    <div class="nav-links">
+      {links.map((l) => (
+        <a href={l.href} class:list={['nav-link', { active: l.key === active }]} aria-current={l.key === active ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a href={contactHref} class="nav-cta">דברו איתי</a>
+    </div>
+  </nav>
+</header>

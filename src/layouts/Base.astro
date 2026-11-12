@@ -1,0 +1,71 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: 'home' | 'research' | 'conservation' | 'services';
+  image?: string;
+}
+const { title, description, active = 'home', image } = Astro.props;
+---
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="he_IL" />
+    {image && <meta property="og:image" content={new URL(image, Astro.site ?? Astro.url).href} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">דילוג לתוכן</a>
+    <div class="page" dir="rtl">
+      <Header active={active} />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script>
+      // Simple image carousels (conservation page)
+      document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+        const items: { src: string; alt: string; cap: string }[] = JSON.parse(root.dataset.carousel || '[]');
+        if (!items.length) return;
+        const img = root.querySelector<HTMLImageElement>('[data-c-img]');
+        const cap = root.querySelector<HTMLElement>('[data-c-cap]');
+        const counter = root.querySelector<HTMLElement>('[data-c-counter]');
+        const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-c-dot]'));
+        let i = 0;
+        const show = (j: number) => {
+          i = (j + items.length) % items.length;
+          const it = items[i];
+          if (img) { img.src = it.src; img.alt = it.alt; }
+          if (cap) cap.textContent = it.cap;
+          if (counter) counter.textContent = `${i + 1} / ${items.length}`;
+          dots.forEach((d, k) => {
+            const s = d.firstElementChild as HTMLElement | null;
+            if (!s) return;
+            s.style.width = k === i ? '22px' : '10px';
+            s.style.background = k === i ? '#0E5A66' : '#B9CFCC';
+          });
+        };
+        root.querySelector('[data-c-prev]')?.addEventListener('click', () => show(i - 1));
+        root.querySelector('[data-c-next]')?.addEventListener('click', () => show(i + 1));
+        dots.forEach((d) => d.addEventListener('click', () => show(Number(d.dataset.cDot))));
+        // preload the rest
+        items.slice(1).forEach((it) => { const p = new Image(); p.src = it.src; });
+      });
+    </script>
+  </body>
+</html>
