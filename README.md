@@ -26,3 +26,5 @@ npm run build    # בונה לתיקייה dist/
 - Framework preset: **Astro**
 - Build command: `npm run build`
 - Build output directory: `dist`
+
+<!-- deploy: Cloudflare Workers (static assets), see wrangler.jsonc -->
