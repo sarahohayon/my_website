@@ -1,25 +1,51 @@
 ---
 interface Props { active?: 'home' | 'research' | 'conservation' | 'services' }
 const { active = 'home' } = Astro.props;
-const links = [
-  { href: '/#about', label: 'עליי', key: 'about' },
-  { href: '/research/phd/', label: 'מחקר מדעי', key: 'research' },
-  { href: '/conservation/', label: 'יוזמות לשמירת טבע', key: 'conservation' },
-  { href: '/services/', label: 'ייעוץ וליווי אקולוגי', key: 'services' },
+const research = [
+  { href: '/research/phd/', label: 'בין הגנה לדיג', sub: 'דוקטורט · שמורות טבע ימיות' },
+  { href: '/research/bat-galim/', label: 'יערות ימיים וצבי ים', sub: 'פוסט-דוקטורט · חקר ימים ואגמים' },
+  { href: '/research/herring/', label: 'זיכרון אקולוגי בדגים', sub: 'פוסט-דוקטורט · אוניברסיטת ויקטוריה' },
+  { href: '/research/invasive/', label: 'מינים פולשים', sub: 'ים התיכון ודרום אפריקה' },
+  { href: null, label: 'העשרת חנקן לאורך חופי ישראל', sub: 'מאסטר · בקרוב' },
 ];
+const path = Astro.url.pathname;
 const contactHref = active === 'services' ? '#contact' : '/#contact';
 ---
 <header class="site-header">
-  <nav>
+  <nav aria-label="ניווט ראשי">
     <a href="/" class="brand">
       <span class="brand-name">ד״ר שרה אוחיון</span>
       <span class="brand-sub">אקולוגית סביבות ימיות ובתי גידול לחים</span>
     </a>
     <div class="nav-links">
-      {links.map((l) => (
-        <a href={l.href} class:list={['nav-link', { active: l.key === active }]} aria-current={l.key === active ? 'page' : undefined}>{l.label}</a>
-      ))}
+      <a href="/#about" class="nav-link">עליי</a>
+      <div class="dd" data-dd>
+        <button type="button" class:list={['nav-link', 'dd-toggle', { active: active === 'research' }]} aria-expanded="false" aria-haspopup="true">
+          מחקר מדעי
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dd-menu">
+          {research.map((r) => r.href ? (
+            <a href={r.href} class:list={['dd-item', { current: path.startsWith(r.href) }]} aria-current={path.startsWith(r.href) ? 'page' : undefined}>
+              <span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span>
+            </a>
+          ) : (
+            <span class="dd-item disabled"><span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span></span>
+          ))}
+        </div>
+      </div>
+      <a href="/conservation/" class:list={['nav-link', { active: active === 'conservation' }]} aria-current={active === 'conservation' ? 'page' : undefined}>יוזמות לשמירת טבע</a>
+      <a href="/services/" class:list={['nav-link', { active: active === 'services' }]} aria-current={active === 'services' ? 'page' : undefined}>ייעוץ וליווי אקולוגי</a>
       <a href={contactHref} class="nav-cta">דברו איתי</a>
     </div>
   </nav>
 </header>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-dd]').forEach((dd) => {
+    const btn = dd.querySelector<HTMLButtonElement>('.dd-toggle')!;
+    const set = (open: boolean) => { dd.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); };
+    btn.addEventListener('click', (e) => { e.stopPropagation(); set(!dd.classList.contains('open')); });
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target as Node)) set(false); });
+    dd.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); btn.focus(); } });
+  });
+</script>
