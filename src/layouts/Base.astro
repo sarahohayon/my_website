@@ -63,6 +63,20 @@ const { title, description, active = 'home', image } = Astro.props;
         root.querySelector('[data-c-prev]')?.addEventListener('click', () => show(i - 1));
         root.querySelector('[data-c-next]')?.addEventListener('click', () => show(i + 1));
         dots.forEach((d) => d.addEventListener('click', () => show(Number(d.dataset.cDot))));
+        // swipe (RTL: swipe left = previous, swipe right = next)
+        const stage = root.querySelector<HTMLElement>('.carousel-stage') || img?.parentElement;
+        let x0: number | null = null;
+        stage?.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+        stage?.addEventListener('touchend', (e) => {
+          if (x0 === null) return;
+          const dx = e.changedTouches[0].clientX - x0; x0 = null;
+          if (Math.abs(dx) > 40) show(dx > 0 ? i + 1 : i - 1);
+        });
+        root.tabIndex = root.tabIndex >= 0 ? root.tabIndex : 0;
+        root.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') show(i + 1);
+          if (e.key === 'ArrowRight') show(i - 1);
+        });
         // preload the rest
         items.slice(1).forEach((it) => { const p = new Image(); p.src = it.src; });
       });

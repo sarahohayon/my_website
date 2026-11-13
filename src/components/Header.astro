@@ -11,8 +11,8 @@ const research = [
 const conservation = [
   { href: '/conservation/vernal-pools/', label: 'שימור בריכות חורף', sub: 'החברה להגנת הטבע' },
   { href: '/conservation/sea-guard/', label: 'משמר הים', sub: 'צוללים מתנדבים למען הים התיכון' },
+  { href: '/conservation/marine-communities/', label: 'קהילות ימיות מקומיות', sub: 'גליל מערבי וראש הכרמל' },
   { href: '/conservation/bat-galim-mpa/', label: 'קידום שמורת טבע ימית בבת-גלים', sub: 'קהילה, סקר והמלצה להכרזה' },
-  { href: null, label: 'קהילות מקומיות מקדמות שמורות ימיות', sub: 'בקרוב' },
 ];
 const path = Astro.url.pathname;
 const isCur = (r: { href: string | null; exact?: boolean }) => !!r.href && (r.exact ? path === r.href || path === r.href.slice(0, -1) : path.startsWith(r.href));
