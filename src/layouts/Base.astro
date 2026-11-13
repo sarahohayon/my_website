@@ -6,7 +6,7 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
-  active?: 'home' | 'research' | 'conservation' | 'services';
+  active?: 'home' | 'about' | 'research' | 'conservation' | 'services';
   image?: string;
 }
 const { title, description, active = 'home', image } = Astro.props;

@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import content from '../content/about.html?raw';
+---
+<Base title="בואו נכיר לעומק | ד״ר שרה אוחיון" description="המסלול המקצועי של ד״ר שרה אוחיון: מחקר אקדמי באקולוגיה ימית, ניהול תוכניות לשמירת טבע, התנדבות ועבודה עם קהילות." active="about" image="/images/about-selfie-reef.jpg">
+  <Fragment set:html={content} />
+</Base>

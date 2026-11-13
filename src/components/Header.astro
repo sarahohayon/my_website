@@ -1,12 +1,12 @@
 ---
-interface Props { active?: 'home' | 'research' | 'conservation' | 'services' }
+interface Props { active?: 'home' | 'about' | 'research' | 'conservation' | 'services' }
 const { active = 'home' } = Astro.props;
 const research = [
   { href: '/research/phd/', label: 'בין הגנה לדיג', sub: 'דוקטורט · שמורות טבע ימיות' },
   { href: '/research/bat-galim/', label: 'יערות ימיים וצבי ים', sub: 'פוסט-דוקטורט · חקר ימים ואגמים' },
   { href: '/research/herring/', label: 'זיכרון אקולוגי בדגים', sub: 'פוסט-דוקטורט · אוניברסיטת ויקטוריה' },
   { href: '/research/invasive/', label: 'מינים פולשים', sub: 'ים התיכון ודרום אפריקה' },
-  { href: null, label: 'העשרת חנקן לאורך חופי ישראל', sub: 'מאסטר · בקרוב' },
+  { href: '/research/msc/', label: 'קיבוע חנקן לאורך חופי ישראל', sub: 'מאסטר · אוניברסיטת בר-אילן' },
 ];
 const path = Astro.url.pathname;
 const contactHref = active === 'services' ? '#contact' : '/#contact';
@@ -18,7 +18,7 @@ const contactHref = active === 'services' ? '#contact' : '/#contact';
       <span class="brand-sub">אקולוגית סביבות ימיות ובתי גידול לחים</span>
     </a>
     <div class="nav-links">
-      <a href="/#about" class="nav-link">עליי</a>
+      <a href="/about/" class:list={['nav-link', { active: active === 'about' }]} aria-current={active === 'about' ? 'page' : undefined}>עליי</a>
       <div class="dd" data-dd>
         <button type="button" class:list={['nav-link', 'dd-toggle', { active: active === 'research' }]} aria-expanded="false" aria-haspopup="true">
           מחקר מדעי
