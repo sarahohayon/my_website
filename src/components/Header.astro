@@ -2,17 +2,17 @@
 interface Props { active?: 'home' | 'about' | 'research' | 'conservation' | 'services' }
 const { active = 'home' } = Astro.props;
 const research = [
-  { href: '/research/phd/', label: 'בין הגנה לדיג', sub: 'דוקטורט · שמורות טבע ימיות' },
-  { href: '/research/bat-galim/', label: 'יערות ימיים וצבי ים', sub: 'פוסט-דוקטורט · חקר ימים ואגמים' },
   { href: '/research/herring/', label: 'זיכרון אקולוגי בדגים', sub: 'פוסט-דוקטורט · אוניברסיטת ויקטוריה' },
+  { href: '/research/bat-galim/', label: 'יערות ימיים וצבי ים', sub: 'פוסט-דוקטורט · חקר ימים ואגמים' },
   { href: '/research/invasive/', label: 'מינים פולשים', sub: 'ים התיכון ודרום אפריקה' },
+  { href: '/research/phd/', label: 'בין הגנה לדיג', sub: 'דוקטורט · שמורות טבע ימיות' },
   { href: '/research/msc/', label: 'קיבוע חנקן לאורך חופי ישראל', sub: 'מאסטר · אוניברסיטת בר-אילן' },
 ];
 const conservation = [
-  { href: '/conservation/vernal-pools/', label: 'שימור בריכות חורף', sub: 'החברה להגנת הטבע' },
-  { href: '/conservation/sea-guard/', label: 'משמר הים', sub: 'צוללים מתנדבים למען הים התיכון' },
-  { href: '/conservation/marine-communities/', label: 'קהילות ימיות מקומיות', sub: 'גליל מערבי וראש הכרמל' },
-  { href: '/conservation/bat-galim-mpa/', label: 'קידום שמורת טבע ימית בבת-גלים', sub: 'קהילה, סקר והמלצה להכרזה' },
+  { href: '/conservation/bat-galim-mpa/', label: 'קידום שמורת טבע ימית בבת-גלים', sub: 'שונית נדירה בלב העיר חיפה' },
+  { href: '/conservation/sea-guard/', label: 'משמר הים', sub: 'צוללים למען הים התיכון' },
+  { href: '/conservation/marine-communities/', label: 'קהילות ימיות מקומיות', sub: 'מקדמות שמורות טבע ימיות' },
+  { href: '/conservation/vernal-pools/', label: 'שימור בריכות חורף', sub: 'בתי גידול לחים שהולכים ונעלמים' },
 ];
 const path = Astro.url.pathname;
 const isCur = (r: { href: string | null; exact?: boolean }) => !!r.href && (r.exact ? path === r.href || path === r.href.slice(0, -1) : path.startsWith(r.href));
