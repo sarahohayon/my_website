@@ -94,3 +94,29 @@ a.dd-item:hover, a.dd-item:focus-visible { background: var(--bg-2); color: var(-
 @media (max-width: 600px) {
   .dd-menu { position: fixed; top: auto; right: 12px; left: 12px; min-width: 0; margin-top: 6px; }
 }
+
+/* banner subtitles: one line on wide screens */
+@media (min-width: 901px) {
+  main section#top p { max-width: none !important; }
+}
+
+/* academic route (about page) */
+.route { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+.route::before { content: ''; position: absolute; top: 34px; right: 10%; left: 10%; border-top: 3px dashed #7FAFA8; }
+.stop { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.stop:not(:last-child)::after { content: ''; position: absolute; top: 27px; left: -12px; transform: translateX(-50%); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: 12px solid #0E5A66; }
+.stop-marker { position: relative; z-index: 1; width: 68px; height: 68px; border-radius: 50%; background: var(--navy); color: #fff; border: 5px solid #E3EEEC; box-shadow: 0 0 0 2px #0E5A66; display: flex; align-items: center; justify-content: center; text-align: center; }
+.stop-marker span { font-size: 11.5px; font-weight: 700; line-height: 1.15; padding: 0 4px; direction: ltr; }
+.stop.current .stop-marker { background: var(--accent); color: var(--navy); box-shadow: 0 0 0 2px var(--accent), 0 0 0 9px rgba(240, 163, 94, 0.25); }
+.stop-card { background: #fff; border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box; flex: 1; }
+.stop-place { display: inline-flex; align-items: center; gap: 5px; font-size: 14px; font-weight: 700; color: #C9733A; }
+.stop-card h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 20px; line-height: 1.25; color: var(--navy); }
+.stop-card p { font-size: 15px; line-height: 1.65; color: var(--muted); }
+.stop-link { font-size: 15px; font-weight: 700; text-decoration: none; margin-top: auto; }
+@media (max-width: 900px) {
+  .route { grid-template-columns: 1fr; gap: 28px; }
+  .route::before { top: 10px; bottom: 10px; right: 33px; left: auto; border-top: none; border-right: 3px dashed #7FAFA8; }
+  .stop { flex-direction: row; align-items: flex-start; }
+  .stop-marker { flex: 0 0 auto; }
+  .stop:not(:last-child)::after { top: auto; bottom: -22px; left: auto; right: 34px; transform: translateX(50%); border-right: 8px solid transparent; border-left: 8px solid transparent; border-top: 12px solid #0E5A66; border-bottom: none; }
+}
