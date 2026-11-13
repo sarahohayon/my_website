@@ -120,3 +120,22 @@ a.dd-item:hover, a.dd-item:focus-visible { background: var(--bg-2); color: var(-
   .stop-marker { flex: 0 0 auto; }
   .stop:not(:last-child)::after { top: auto; bottom: -22px; left: auto; right: 34px; transform: translateX(50%); border-right: 8px solid transparent; border-left: 8px solid transparent; border-top: 12px solid #0E5A66; border-bottom: none; }
 }
+
+/* conservation hub cards */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; }
+.proj-card { background: #fff; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; }
+a.proj-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(7, 28, 40, 0.14); color: var(--text); }
+.proj-card img, .proj-ph { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.proj-ph { background: #DCE9E4; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 15px; }
+.proj-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.proj-kicker { font-size: 14px; font-weight: 700; color: var(--teal); }
+.proj-body h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 24px; line-height: 1.25; color: var(--navy); }
+.proj-body p { font-size: 16px; line-height: 1.7; color: var(--muted); }
+.proj-cta { margin-top: auto; font-size: 16px; font-weight: 700; color: var(--teal); }
+.proj-card.soon .proj-cta { color: #8AA2A8; }
+
+/* photo gallery */
+.gallery { columns: 3 280px; column-gap: 16px; }
+.gallery figure { break-inside: avoid; margin: 0 0 16px; display: flex; flex-direction: column; gap: 6px; }
+.gallery img { width: 100%; border-radius: 16px; display: block; }
+.gallery figcaption { font-size: 14px; color: #5A6F78; }

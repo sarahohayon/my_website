@@ -8,7 +8,19 @@ const research = [
   { href: '/research/invasive/', label: 'מינים פולשים', sub: 'ים התיכון ודרום אפריקה' },
   { href: '/research/msc/', label: 'קיבוע חנקן לאורך חופי ישראל', sub: 'מאסטר · אוניברסיטת בר-אילן' },
 ];
+const conservation = [
+  { href: '/conservation/', label: 'כל המיזמים', sub: 'סקירה של כל מיזמי שמירת הטבע', exact: true },
+  { href: '/conservation/vernal-pools/', label: 'שימור בריכות חורף', sub: 'החברה להגנת הטבע' },
+  { href: '/conservation/sea-guard/', label: 'משמר הים', sub: 'צוללים מתנדבים למען הים התיכון' },
+  { href: '/conservation/bat-galim-mpa/', label: 'שמורה ימית בבת-גלים', sub: 'קהילה, סקר והמלצה להכרזה' },
+  { href: null, label: 'קהילות מקומיות מקדמות שמורות ימיות', sub: 'בקרוב' },
+];
 const path = Astro.url.pathname;
+const isCur = (r: { href: string | null; exact?: boolean }) => !!r.href && (r.exact ? path === r.href || path === r.href.slice(0, -1) : path.startsWith(r.href));
+const menus = [
+  { key: 'research', label: 'מחקר מדעי', items: research },
+  { key: 'conservation', label: 'שמירת טבע', items: conservation },
+];
 const contactHref = active === 'services' ? '#contact' : '/#contact';
 ---
 <header class="site-header">
@@ -19,22 +31,23 @@ const contactHref = active === 'services' ? '#contact' : '/#contact';
     </a>
     <div class="nav-links">
       <a href="/about/" class:list={['nav-link', { active: active === 'about' }]} aria-current={active === 'about' ? 'page' : undefined}>עליי</a>
-      <div class="dd" data-dd>
-        <button type="button" class:list={['nav-link', 'dd-toggle', { active: active === 'research' }]} aria-expanded="false" aria-haspopup="true">
-          מחקר מדעי
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="dd-menu">
-          {research.map((r) => r.href ? (
-            <a href={r.href} class:list={['dd-item', { current: path.startsWith(r.href) }]} aria-current={path.startsWith(r.href) ? 'page' : undefined}>
-              <span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span>
-            </a>
-          ) : (
-            <span class="dd-item disabled"><span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span></span>
-          ))}
+      {menus.map((m) => (
+        <div class="dd" data-dd>
+          <button type="button" class:list={['nav-link', 'dd-toggle', { active: active === m.key }]} aria-expanded="false" aria-haspopup="true">
+            {m.label}
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="dd-menu">
+            {m.items.map((r) => r.href ? (
+              <a href={r.href} class:list={['dd-item', { current: isCur(r) }]} aria-current={isCur(r) ? 'page' : undefined}>
+                <span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span>
+              </a>
+            ) : (
+              <span class="dd-item disabled"><span class="dd-label">{r.label}</span><span class="dd-sub">{r.sub}</span></span>
+            ))}
+          </div>
         </div>
-      </div>
-      <a href="/conservation/" class:list={['nav-link', { active: active === 'conservation' }]} aria-current={active === 'conservation' ? 'page' : undefined}>שמירת טבע</a>
+      ))}
       <a href="/services/" class:list={['nav-link', { active: active === 'services' }]} aria-current={active === 'services' ? 'page' : undefined}>ייעוץ וליווי אקולוגי</a>
       <a href={contactHref} class="nav-cta">דברו איתי</a>
     </div>
