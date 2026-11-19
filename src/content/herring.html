@@ -120,6 +120,37 @@
         <img src="/images/133011f9793d9d570f4024b16286ec11.jpg" alt="איור: משמאל, דגים בוגרים מובילים להקת צעירים לאתרי הרבייה; מימין, רשתות דיג מוציאות את הדגים הבוגרים והצעירים מאבדים את הדרך" style="width: 100%; display: block; border-radius: 12px">
         <figcaption style="font-size: 15px; line-height: 1.6; color: #3D5560">משמאל – מחזור בריא: דגים בוגרים מובילים את הצעירים לאתרי הרבייה, והידע עובר מדור לדור. מימין – מחזור משובש: הדייג מוציא את הדגים הבוגרים, והצעירים מאבדים את הדרך לאתרים ההיסטוריים.</figcaption>
       </figure>
+      <!-- VIDEO: Herring Rising -->
+      <div style="background: #FFFFFF; border-radius: 22px; padding: 20px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+        <div id="herring-video" style="flex: 999 1 520px; min-width: 0; position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; background: #0B2A3C">
+          <button type="button" id="herring-video-play" aria-label="הפעלת הסרטון Herring Rising" style="all: unset; cursor: pointer; position: absolute; inset: 0; display: block">
+            <img src="/images/herring-rising-542.jpg" alt="ד״ר שרה אוחיון מציגה את המחקר שלה בפורום Herring Rising" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+            <span aria-hidden="true" style="position: absolute; inset: 0; background: rgba(7, 28, 40, 0.15)"></span>
+            <span aria-hidden="true" style="position: absolute; top: 50%; left: 84%; width: 88px; height: 88px; margin: -44px 0 0 -44px; border-radius: 999px; background: #F0A35E; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35); display: flex; align-items: center; justify-content: center">
+              <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" style="margin-left: 5px"><path d="M6 4l14 8-14 8z" fill="#0B2A3C"></path></svg>
+            </span>
+          </button>
+        </div>
+        <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-size: 18px; font-weight: 700; color: #0E5A66">סרטון</span>
+          <h3 style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; line-height: 1.25; color: #0B2A3C">Herring Rising: שיתוף פעולה להגנה על ההרינג</h3>
+          <p style="font-size: 17px; line-height: 1.75; color: #3D5560">בפורום Herring Rising, שארגנו Georgia Strait Alliance והאגודה לשימור ולחקר ההרינג, דיברתי לצד הצ'יף התורשתי של אומת W̱SÁNEĆ, אריק פלקי, ועורך הדין ג'ון ריץ' – על ההגנה על ההרינג בים הסליש מנקודת מבט אקולוגית, משפטית וילידית.</p>
+          <a href="https://www.youtube.com/watch?v=TanOGqGUE_0" target="_blank" rel="noopener" style="align-self: flex-start; font-size: 17px; font-weight: 700">לצפייה ביוטיוב ←</a>
+          <span style="font-size: 14px; color: #5A6F78">וידאו: Pacific Wild</span>
+        </div>
+      </div>
+      <script>
+        document.getElementById('herring-video-play')?.addEventListener('click', function () {
+          var box = document.getElementById('herring-video');
+          var f = document.createElement('iframe');
+          f.src = 'https://www.youtube-nocookie.com/embed/TanOGqGUE_0?autoplay=1&rel=0';
+          f.title = 'Herring Rising | A collaboration to protect Pacific Herring in the Salish Sea';
+          f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+          f.allowFullscreen = true;
+          f.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+          box.replaceChildren(f);
+        });
+      </script>
       <blockquote style="margin: 0; background: #0B2A3C; color: #FFFFFF; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 14px">
         <p style="font-family: 'Frank Ruhl Libre', serif; font-size: 32px; line-height: 1.4">״להרינג אבדו המנהיגים הגדולים, והם כבר לא יודעים איפה להתרבות.״</p>
         <span style="font-size: 16px; color: #A9C7CF">מתוך הידע של האומות הראשונות</span>
