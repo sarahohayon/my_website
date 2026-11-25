@@ -26,7 +26,7 @@ const contactHref = active === 'services' ? '#contact' : '/#contact';
   <nav aria-label="ניווט ראשי">
     <a href="/" class="brand">
       <span class="brand-name">ד״ר שרה אוחיון</span>
-      <span class="brand-sub">אקולוגית סביבות ימיות ובתי גידול לחים</span>
+      <span class="brand-sub">אקולוגית · ייעוץ וליווי בתחומי סביבה ושמירת טבע</span>
     </a>
     <div class="nav-links">
       <a href="/about/" class:list={['nav-link', { active: active === 'about' }]} aria-current={active === 'about' ? 'page' : undefined}>עליי</a>
@@ -48,7 +48,7 @@ const contactHref = active === 'services' ? '#contact' : '/#contact';
         </div>
       ))}
       <a href="/services/" class:list={['nav-link', { active: active === 'services' }]} aria-current={active === 'services' ? 'page' : undefined}>ייעוץ וליווי אקולוגי</a>
-      <a href={contactHref} class="nav-cta">דברו איתי</a>
+      <a href={contactHref} class="nav-cta">לשיחת היכרות</a>
     </div>
   </nav>
 </header>
