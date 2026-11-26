@@ -159,14 +159,28 @@
   </section>
 
   <!-- HOW -->
-  <section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 40px">
-    <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 44px; line-height: 1.2; color: #0B2A3C">איך עובדים יחד</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px">
-      <div style="display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Frank Ruhl Libre', serif; font-size: 48px; font-weight: 700; color: #C9733A">01</span><h3 style="font-size: 22px; font-weight: 700; color: #0B2A3C">שיחת היכרות</h3><p style="font-size: 17px; line-height: 1.7; color: #3D5560">מבינים יחד מהם הצרכים, לוחות הזמנים והתוצרים שאתם צריכים.</p></div>
-      <div style="display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Frank Ruhl Libre', serif; font-size: 48px; font-weight: 700; color: #C9733A">02</span><h3 style="font-size: 22px; font-weight: 700; color: #0B2A3C">תכנון מדעי</h3><p style="font-size: 17px; line-height: 1.7; color: #3D5560">אני בונה את שיטות העבודה, תוכנית הסקר, לוחות הזמנים ומסגרת התקציב.</p></div>
-      <div style="display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Frank Ruhl Libre', serif; font-size: 48px; font-weight: 700; color: #C9733A">03</span><h3 style="font-size: 22px; font-weight: 700; color: #0B2A3C">שטח, ניתוח ודוח</h3><p style="font-size: 17px; line-height: 1.7; color: #3D5560">עבודת שטח, ניתוח וכתיבה, דו״ח מסכם ברור עם ממצאים והמלצות.</p></div>
+  <section style="max-width: 1240px; margin: 0 auto; padding: 104px 32px; display: flex; flex-direction: column; gap: 44px">
+    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 860px">
+      <span style="font-size: 22px; font-weight: 700; color: #0E5A66">התהליך</span>
+      <h2 style="font-family: 'Frank Ruhl Libre', serif; font-size: 44px; line-height: 1.2; color: #0B2A3C">איך עובדים איתי</h2>
     </div>
+    <ol class="steps">
+      <li class="step"><span class="step-num">1</span><h3>שיחת היכרות</h3><p>מבינים יחד את הצורך, את לוחות הזמנים ואת הדרישות הרגולטוריות.</p></li>
+      <li class="step"><span class="step-num">2</span><h3>הצעה מותאמת</h3><p>היקף העבודה, השיטות, התוצרים והמחיר – בכתב ובבהירות.</p></li>
+      <li class="step"><span class="step-num">3</span><h3>עבודת שטח וניתוח</h3><p>איסוף נתונים עם צוות שטח מקצועי, ניתוח סטטיסטי ב-R ומיפוי ב-QGIS.</p></li>
+      <li class="step"><span class="step-num">4</span><h3>דוח והמלצות</h3><p>דוח בשפה ברורה, עם מפות והמלצות ישימות. לפי הצורך, גם הצגת הממצאים לגורמים הרלוונטיים.</p></li>
+    </ol>
   </section>
+  <style>
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .step { position: relative; background: #FFFFFF; border-radius: 22px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; }
+    .step-num { width: 52px; height: 52px; border-radius: 50%; background: #0B2A3C; color: #F0A35E; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; }
+    .step:not(:last-child)::after { content: '←'; position: absolute; top: 40px; left: -20px; font-size: 22px; color: #0E5A66; font-weight: 700; }
+    .step h3 { font-family: 'Frank Ruhl Libre', serif; font-size: 25px; color: #0B2A3C; }
+    .step p { font-size: 17px; line-height: 1.7; color: #3D5560; }
+    @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .step::after { display: none; } }
+    @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+  </style>
 
   <!-- CONTACT -->
   <section id="contact" style="background: #0B2A3C; color: #FFFFFF">
