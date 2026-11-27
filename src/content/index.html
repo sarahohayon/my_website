@@ -71,10 +71,18 @@
         <div class="aud-panel" role="tabpanel" id="aud-p3" aria-labelledby="aud-t3" hidden><p>אימוץ חוף ים, נחל או בריכת חורף.</p><a href="#contact">יש לכם פרויקט כזה? אשמח לשמוע ←</a></div>
         <div class="aud-panel" role="tabpanel" id="aud-p4" aria-labelledby="aud-t4" hidden><p>הכשרות, הרצאות וסיורים, מעל המים ומתחתם.</p><a href="#contact">יש לכם פרויקט כזה? אשמח לשמוע ←</a></div>
       </div>
-      <p class="proc-line"><b>התהליך:</b> <span>שיחת היכרות</span> <i aria-hidden="true">←</i> <span>הצעה מותאמת</span> <i aria-hidden="true">←</i> <span>עבודת שטח וניתוח</span> <i aria-hidden="true">←</i> <span>דוח והמלצות</span></p>
       <div style="display: flex; flex-wrap: wrap; gap: 14px">
         <a href="#contact" style="background: #F0A35E; color: #0B2A3C; text-decoration: none; font-size: 19px; font-weight: 700; padding: 17px 30px; border-radius: 999px">לשיחת היכרות ללא עלות</a>
         <a href="/services/" style="border: 1.5px solid #A9C7CF; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 28px; border-radius: 999px">לכל השירותים ←</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <h3 style="font-size: 22px; font-weight: 700; color: #F0A35E">התהליך</h3>
+        <ol class="steps">
+          <li class="step"><span class="step-num">1</span><h3>שיחת היכרות</h3><p>מבינים יחד את הצורך, את לוחות הזמנים ואת הדרישות הרגולטוריות.</p></li>
+          <li class="step"><span class="step-num">2</span><h3>הצעה מותאמת</h3><p>היקף העבודה, השיטות, התוצרים והמחיר – בכתב ובבהירות.</p></li>
+          <li class="step"><span class="step-num">3</span><h3>עבודת שטח וניתוח</h3><p>איסוף נתונים עם צוות שטח מקצועי, ניתוח סטטיסטי ב-R ומיפוי ב-QGIS.</p></li>
+          <li class="step"><span class="step-num">4</span><h3>דוח והמלצות</h3><p>דוח בשפה ברורה, עם מפות והמלצות ישימות. לפי הצורך, גם הצגת הממצאים לגורמים הרלוונטיים.</p></li>
+        </ol>
       </div>
     </div>
     <script>
@@ -234,9 +242,6 @@
     .aud-panel[hidden] { display: none; }
     .aud-panel p { font-size: 19px; line-height: 1.7; color: #E3EEF0; }
     .aud-panel a { color: #F0A35E; font-weight: 700; font-size: 16px; text-decoration: none; }
-    .proc-line { font-size: 17px; line-height: 1.9; color: #C4DADF; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
-    .proc-line b { color: #F0A35E; }
-    .proc-line i { font-style: normal; color: #F0A35E; }
     .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; counter-reset: s; }
     .step { position: relative; background: #F3F7F6; border-radius: 22px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; }
     .step-num { width: 52px; height: 52px; border-radius: 50%; background: #0B2A3C; color: #F0A35E; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; }
